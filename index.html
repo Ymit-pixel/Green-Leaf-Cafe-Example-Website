@@ -4,12 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GreenLeaf Café</title>
+
+    <!-- Cozy Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Pacifico&display=swap" rel="stylesheet">
+
     <style>
+        :root {
+            --cream: #fdf7f2;
+            --coffee: #5a4634;
+            --latte: #d8c3a5;
+            --green: #6b8e4e;
+            --accent: #b08968;
+        }
+
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f7f7f7;
-            color: #333;
+            font-family: 'Lora', serif;
+            background: var(--cream);
+            color: var(--coffee);
         }
 
         /* NAVBAR */
@@ -17,137 +29,195 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 40px;
-            background: white;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 18px 40px;
+            background: #fff;
+            border-bottom: 2px solid var(--latte);
             position: sticky;
             top: 0;
+            z-index: 10;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+        .logo {
+            font-family: 'Pacifico', cursive;
+            font-size: 1.8rem;
+            color: var(--coffee);
         }
 
         nav a {
             text-decoration: none;
-            color: #333;
-            margin-left: 20px;
-            font-weight: bold;
+            color: var(--coffee);
+            margin-left: 25px;
+            font-weight: 600;
+            position: relative;
         }
 
-        /* HERO SECTION */
+        nav a::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            left: 0;
+            bottom: -4px;
+            transition: 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* HERO */
         .hero {
             height: 80vh;
             background: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836') center/cover no-repeat;
+            position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
             color: white;
-            padding: 0 20px;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(40, 25, 15, 0.45);
+        }
+
+        .hero > div {
+            position: relative;
+            z-index: 2;
         }
 
         .hero h1 {
-            font-size: 3rem;
+            font-size: 3.2rem;
             margin-bottom: 10px;
-            text-shadow: 0 3px 8px rgba(0,0,0,0.4);
+            font-family: 'Pacifico', cursive;
         }
 
         .hero p {
             font-size: 1.3rem;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .btn {
-            padding: 12px 25px;
+            padding: 12px 28px;
             font-size: 1rem;
             border: none;
-            background: #4CAF50;
+            background: var(--green);
             color: white;
-            border-radius: 5px;
+            border-radius: 30px;
             cursor: pointer;
             text-decoration: none;
+            transition: 0.3s;
         }
 
         .btn:hover {
-            background: #45a049;
+            background: #587a41;
         }
 
-        /* ABOUT SECTION */
+        /* ABOUT */
         .about {
-            padding: 60px 40px;
-            background: white;
+            padding: 70px 40px;
             text-align: center;
         }
 
         .about h2 {
-            margin-bottom: 20px;
+            font-family: 'Pacifico', cursive;
+            font-size: 2.4rem;
+            margin-bottom: 15px;
         }
 
         .about p {
             max-width: 700px;
             margin: auto;
-            line-height: 1.6;
+            line-height: 1.7;
+            font-size: 1.1rem;
         }
 
-        /* SERVICES */
+        /* MENU */
         .services {
-            padding: 60px 40px;
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 0px;
+            padding: 70px 40px;
+            background: #fff;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-family: 'Pacifico', cursive;
+            font-size: 2.4rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
         }
 
         .service-card {
-            background: white;
-            padding: 30px;
-            width: 300px;
-            border-radius: 5px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            text-align: center;
+            background: var(--cream);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border: 1px solid var(--latte);
         }
 
         .service-card h3 {
-            margin-bottom: 10px;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+
+        .service-card p {
+            margin: 8px 0;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #e8dccc;
+        }
+
+        .service-card p:last-child {
+            border-bottom: none;
         }
 
         /* CONTACT */
         .contact {
-            padding: 60px 40px;
-            background: #e8f5e9;
+            padding: 70px 40px;
+            background: var(--latte);
             text-align: center;
         }
 
+        .contact h2 {
+            font-family: 'Pacifico', cursive;
+            font-size: 2.4rem;
+            margin-bottom: 20px;
+        }
+
         .contact input, .contact textarea {
-            width: 300px;
-            padding: 10px;
+            width: 320px;
+            padding: 12px;
             margin: 10px 0;
-            border-radius: 5px;
-            border: 1px solid #ccc;
+            border-radius: 8px;
+            border: 1px solid #bfae9f;
+            font-family: 'Lora', serif;
         }
 
         /* FOOTER */
         footer {
             text-align: center;
             padding: 20px;
-            background: #333;
+            background: var(--coffee);
             color: white;
+            font-size: 0.9rem;
         }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.2rem; }
-            .services { flex-direction: column; align-items: center; }
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        .section-title {
-            margin-bottom: 20px;
-            text-align: center;
-            width: 100%;
-        }
-        
-        textarea {
-            margin-bottom: 20px;
+            .hero h1 { font-size: 2.4rem; }
         }
     </style>
 </head>
@@ -156,7 +226,7 @@
 
     <!-- NAVBAR -->
     <nav>
-        <div class="logo"><strong>GreenLeaf Café</strong></div>
+        <div class="logo">GreenLeaf Café</div>
         <div>
             <a href="#about">About</a>
             <a href="#menu">Menu</a>
@@ -167,103 +237,93 @@
     <!-- HERO -->
     <section class="hero">
         <div>
-            <h1>Fresh Coffee. Local Ingredients.</h1>
-            <p>Your neighbourhood café serving organic, sustainable food.</p>
+            <h1>Warm Coffee. Cozy Moments.</h1>
+            <p>Your neighbourhood café for comfort, community, and handcrafted flavours.</p>
             <a href="#menu" class="btn">View Menu</a>
         </div>
     </section>
 
     <!-- ABOUT -->
     <section id="about" class="about">
-        <h2>About Us</h2>
+        <h2>Our Story</h2>
         <p>
-            GreenLeaf Café is a Melbourne-based coffee shop focused on sustainability,
-            community, and high-quality ingredients. We believe in great food, great coffee,
-            and great people.
+            At GreenLeaf Café, we believe a café should feel like a second home.  
+            Our space is filled with warm lighting, rustic textures, and the smell of freshly roasted beans.  
+            We source local ingredients, support local growers, and craft every cup with care.
         </p>
     </section>
 
-    <!-- SERVICES -->
+    <!-- MENU -->
     <section id="menu" class="services">
         <div class="section-title">
             <h2>Our Menu</h2>
-            <p>Freshly prepared, locally sourced, and made with care.</p>
+            <p>Comforting flavours, freshly prepared every day.</p>
         </div>
 
-        <!-- Coffee -->
-        <div class="service-card">
-            <h3>Coffee & Espresso</h3>
-            <p>Flat White — $4.50</p>
-            <p>Cappuccino — $4.50</p>
-            <p>Latte — $4.50</p>
-            <p>Long Black — $4.00</p>
-            <p>Mocha — $5.00</p>
-            <p>Iced Latte — $5.50</p>
-            <p>Chai Latte — $5.00</p>
-            <p>Hot Chocolate — $4.50</p>
-        </div>
+        <div class="services-grid">
 
-        <!-- Breakfast -->
-        <div class="service-card">
-            <h3>Breakfast</h3>
-            <p>Avocado Toast — $14  
-            <br><small>With feta, lemon, and chilli flakes.</small></p>
+            <!-- Coffee -->
+            <div class="service-card">
+                <h3>Coffee & Espresso</h3>
+                <p>Flat White — $4.50</p>
+                <p>Cappuccino — $4.50</p>
+                <p>Latte — $4.50</p>
+                <p>Long Black — $4.00</p>
+                <p>Mocha — $5.00</p>
+                <p>Iced Latte — $5.50</p>
+            </div>
 
-            <p>Eggs on Toast — $12  
-            <br><small>Free-range eggs cooked your way.</small></p>
+            <!-- Breakfast -->
+            <div class="service-card">
+                <h3>Breakfast</h3>
+                <p>Avocado Toast — $14</p>
+                <p>Eggs on Toast — $12</p>
+                <p>Granola Bowl — $13</p>
+                <p>Pancakes — $15</p>
+            </div>
 
-            <p>Granola Bowl — $13  
-            <br><small>House-made granola with yoghurt and berries.</small></p>
+            <!-- Lunch -->
+            <div class="service-card">
+                <h3>Lunch</h3>
+                <p>Chicken & Avocado Wrap — $14</p>
+                <p>Veggie Burger — $16</p>
+                <p>Caesar Salad — $15</p>
+                <p>Soup of the Day — $12</p>
+            </div>
 
-            <p>Pancakes — $15  
-            <br><small>Served with maple syrup and seasonal fruit.</small></p>
-        </div>
-
-        <!-- Lunch -->
-        <div class="service-card">
-            <h3>Lunch</h3>
-            <p>Chicken & Avocado Wrap — $14  
-            <br><small>Grilled chicken, avo, lettuce, and aioli.</small></p>
-
-            <p>Veggie Burger — $16  
-            <br><small>Plant-based patty with tomato, lettuce, and house sauce.</small></p>
-
-            <p>Caesar Salad — $15  
-            <br><small>Crisp lettuce, parmesan, croutons, and dressing.</small></p>
-
-            <p>Soup of the Day — $12  
-            <br><small>Served with toasted sourdough.</small></p>
-        </div>
-
-        <!-- Pastries -->
-        <div class="service-card">
-            <h3>Pastries & Sweets</h3>
-            <p>Croissant — $5</p>
-            <p>Chocolate Croissant — $6</p>
-            <p>Banana Bread — $5.50</p>
-            <p>Muffins — $5</p>
-            <p>Brownie — $4.50</p>
-        </div>
-
-        <!-- Drinks -->
-        <div class="service-card">
-            <h3>Cold Drinks</h3>
-            <p>Iced Coffee — $6</p>
-            <p>Iced Chocolate — $6</p>
-            <p>Fresh Orange Juice — $7</p>
-            <p>Still Water — $3</p>
-            <p>Soft Drinks — $4</p>
+            <!-- Pastries -->
+            <div class="service-card">
+                <h3>Pastries & Sweets</h3>
+                <p>Croissant — $5</p>
+                <p>Banana Bread — $5.50</p>
+                <p>Muffins — $5</p>
+                <p>Brownie — $4.50</p>
+            </div>
+            <!-- Teas -->
+            <div class="service-card">
+                <h3>Teas & More</h3>
+                <p>Chai Latte — $4.50</p>
+                <p>Matcha Latte — $5.00</p>
+                <p>Herbal Tea — $4.00</p>
+                <p>Hot Chocolate — $5.00</p>
+            </div>
+            <!-- Cold Drinks -->
+            <div class="service-card">
+                <h3>Cold Drinks</h3>
+                <p>Fresh Orange Juice — $6.00</p>
+                <p>House-made Lemonade — $5.50</p>
+                <p>Soft Drinks — $3.00</p>
+                <p>Still Water — $2.50</p>
+            </div>
         </div>
     </section>
 
-
     <!-- CONTACT -->
     <section id="contact" class="contact">
-        <h2>Contact Us</h2>
+        <h2>Get in Touch</h2>
         <input type="text" placeholder="Your Name" /><br />
         <input type="email" placeholder="Your Email" /><br />
         <textarea rows="4" placeholder="Your Message"></textarea><br />
-        <br>
         <a class="btn">Send Message</a>
     </section>
 
